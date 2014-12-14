@@ -53,6 +53,15 @@ void printList(ListNode *head)
     printf("\n");
 }
 
+void printListRecursive(ListNode *head)
+{
+    if(head)
+    {
+        printf("%d ", head->val);
+        printListRecursive(head->next);
+    }
+}
+
 void deDuplicate();
 ListNode* insertNode(int pos, int value,  ListNode *head) //return new head
 {
@@ -92,7 +101,12 @@ int main()
     printList(head);
     head = deleteNode(5,head);
     printf("after deleting one node with value 5\n");
-    printList(head);
-    
+    ListNode *tmpHead = head;
+    printListRecursive(tmpHead);
+    printf("\n"); 
+    //add node at pos=6, i.e. add 8 back
+    tmpHead = insertNode(4,5,tmpHead);
+    printListRecursive(tmpHead);
+    printf("\n");
     return 0;
 }
