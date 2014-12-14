@@ -11,16 +11,12 @@ int main()
         int rnd = rand()%50;
         stack.push(rnd);
     }
-  /*  
-    stack.print();
 
-    stack.pop();
+    //test member access
+//    printf("%d \n", stack.sz); //invalid, protected member cannot be
+//    accessed by its objects
 
-    stack.print();
-
-    int topvalue = stack.top();
-    printf("top value = %d\n", topvalue);
-*/    
+    //test stack
     while(!stack.empty())
     {
         stack.print();

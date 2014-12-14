@@ -7,6 +7,11 @@ using namespace std;
 
 class myStack
 {
+    //private: only accessible within the class defining them
+    //protected: accessible in the class that defines them and inherit from
+    //that class
+    //both are also accessible by friends of their class, protected accessible
+    //by class inherited from friends' derived class
     protected:
         vector<int>stk;
         int sz;
