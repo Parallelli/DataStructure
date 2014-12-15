@@ -77,6 +77,47 @@ void preorder(TreeNode *rt)
             preorder(rt->right);
     }
 }
+
+TreeNode* inorderSuccessor(TreeNode *rt, TreeNode *target)
+{
+    if(target->right)
+    {
+        TreeNode *tmp=target->right;
+        while(tmp->left)
+            tmp = tmp ->left;
+        return tmp;
+    }
+    
+    TreeNode *tmpRt = rt;
+    TreeNode *succ = NULL;
+    while(tmpRt)
+    {
+        if(target->val < tmpRt->val)
+        {
+            succ = tmpRt;
+            tmpRt = tmpRt -> left;
+        }
+        else 
+        {
+            tmpRt = tmpRt -> right;
+        }
+    }
+    return succ;
+}
+
+TreeNode* findTarget(TreeNode *rt, int value)
+{
+    if(rt->val == value)
+        return rt;
+    else
+    {
+        if(rt->val < value)
+            return findTarget(rt->right, value);
+        else 
+            return findTarget(rt->left, value);
+    }
+    return NULL;
+}
 void inorder_iterative(TreeNode *rt)
 {
     //to do
@@ -95,6 +136,10 @@ int main()
     TreeNode* rt1 = sortedArrayToBST(a,0,n-1);
     TreeNode* rt2 = sortedLinkedListToBST(it,0,n-1);
     
+    TreeNode* target = findTarget(rt0, 6);
+
+    TreeNode* succ = inorderSuccessor(rt0, target);
+    printf("succ of %d is %d\n",target->val,  succ->val);
     preorder(rt0);
     printf("\n");    
     preorder(rt1);
