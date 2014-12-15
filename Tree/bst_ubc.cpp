@@ -174,6 +174,7 @@ int main()
     t.insert("G");
     t.insert("H");
     t.insert("J");
+    t.print();
     t.erase("A"); // Removing leaf
     t.erase("B"); // Removing element with one child
     t.erase("F"); // Removing element with two children
