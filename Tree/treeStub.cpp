@@ -66,15 +66,15 @@ TreeNode* sortedLinkedListToBST(list<int>::iterator it, int start, int end)
 
     return rt;
 }
-void inorder(TreeNode *rt)
+void preorder(TreeNode *rt)
 {
     if(rt)
     {
         printf("%d ", rt->val);
         if(rt->left)
-            inorder(rt->left);
+            preorder(rt->left);
         if(rt->right)
-            inorder(rt->right);
+            preorder(rt->right);
     }
 }
 void inorder_iterative(TreeNode *rt)
@@ -95,11 +95,11 @@ int main()
     TreeNode* rt1 = sortedArrayToBST(a,0,n-1);
     TreeNode* rt2 = sortedLinkedListToBST(it,0,n-1);
     
-    inorder(rt0);
+    preorder(rt0);
     printf("\n");    
-    inorder(rt1);
+    preorder(rt1);
     printf("\n");
-    inorder(rt2);
+    preorder(rt2);
     printf("\n");
 
     return 0;
