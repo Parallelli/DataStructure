@@ -48,6 +48,20 @@ ListNode* deleteNode(int value, ListNode *head)
     return res;
 }
 
+ListNode* reverseList(ListNode* head)
+{
+    ListNode* pre = NULL;
+    ListNode* cur = head;
+    while(cur)
+    {
+        ListNode* tmp = cur->next;
+        cur->next = pre;
+        pre = cur;
+        cur = tmp;
+    }
+    return pre;
+}
+
 void appendNode(ListNode *last, int value)
 {
     ListNode *tmp = new ListNode(value);
@@ -114,16 +128,21 @@ int main()
         appendNode(cur,a[i]);
         cur = cur -> next;
     }
-    printf("after adding nodes\n");
+    printf("after adding nodes: ");
     printList(head);
+
+    printf("after reverse linkedlist: ");
+    head =  reverseList(head);
+    printList(head);
+
     int delTarget = 1;
     head = deleteNode(1,head);
-    printf("after deleting all nodes with value %d:\n", delTarget);
+    printf("after deleting all nodes with value %d: ", delTarget);
     printListRecursive(head);
     printf("\n"); 
     //add node at pos=6, i.e. add 8 back
     head = insertNode(1,5,head);
-    printf("after insert node with value 5 at position 1:\n");
+    printf("after insert node with value 5 at position 1: ");
     printListRecursive(head);
     printf("\n");
     return 0;
