@@ -2,6 +2,8 @@
 using namespace std;
 
 //example from stackoverflow
+//override: early binding while compiling
+//virtual: dynamic (later) binding while running
 class Animal
 {
     public:
