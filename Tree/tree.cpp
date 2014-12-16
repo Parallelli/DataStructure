@@ -155,7 +155,7 @@ TreeNode* inorderSuccessor(TreeNode *rt, TreeNode *target)
     TreeNode* succ = NULL;
     while(rt)
     {
-        if(rt->val < target->val)
+        if(rt->val <= target->val)
         {
             rt = rt -> right;
         }
@@ -241,7 +241,7 @@ int main()
     postorder(rt0);
     printf("\n");
 
-    TreeNode* target = findTarget(rt0, 6);
+    TreeNode* target = findTarget(rt0, 8);
 
     TreeNode* succ = inorderSuccessor(rt0, target);
     printf("succ of %d is %d\n",target->val,  succ->val);
