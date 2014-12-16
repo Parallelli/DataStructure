@@ -11,7 +11,7 @@ const int maxn = 1000;
 //每种 type 的起始地址都是自己的 size 的倍数，比如 short (2Bytes),
 //所以它的起始地址一定是2的倍数，对于 struct Y, int i 从1开始占4个字节，char c
 //从任意地址开始占1个字节，所以到了5，但 short s
-//不能从5开始，必须从6开始，次啊能被2整除
+//不能从5开始，必须从6开始，才能被2整除
 //64位系统中，sizeof(pointer)=8, 所以遇到 pointer 的，就要对齐8
 //reference: http://blog.csdn.net/manbug/article/details/1124845
 struct X
@@ -74,7 +74,7 @@ void testSize()
 //functions calls.
 int get()
 {
-    static int i;//default initialize as 0, only once, next time when call, i
+    static int i = 1;//default initialize as 0, only once, next time when call, i
 //won't be initialized again, but preserve last value
     return i++;
 }
@@ -85,8 +85,10 @@ int get()
 extern int global_var;
 int main()
 {
-   // testSize();
+    testSize();
     printf("%d %d %d\n", get(), get(), get());
-    printf("extern global var = %d\n", ++global_var);
+//    printf("extern global var = %d\n", ++global_var);
+    struct Z z;
+    printf("sizeof(Z.s) = %d\n", sizeof(z.s));
     return 0;
 }
