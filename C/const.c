@@ -52,7 +52,7 @@ int main()
     myfun2(q);
 
     int const  *r = a;
-    *(r+1) = 20;
+//    *(r+1) = 20;//not allowed, int const *r is equivalent to const int *r
     printf("%d\n", *r); 
     return 0;
 }
