@@ -5,6 +5,10 @@
 #include<stdlib.h>
 #include<dirent.h>
 
+//how to implement ls -R, recursively list all files in current directory,
+//include sub directory in current one
+//what function in dirent.h provided to check whether current myfile get from
+//readdir is a file or folder?
 int main(int argc, char* argv[])
 {
     DIR *mydir;
