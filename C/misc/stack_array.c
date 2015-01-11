@@ -4,14 +4,14 @@
 
 typedef struct stack
 {
-    int *ptr;
+    int *buf;
     int sz;
     int offset;
 }stack;
 
 void init(stack *stk)
 {
-    stk->ptr = (int*)malloc(sizeof(int));
+    stk->buf = (int*)malloc(sizeof(int));
     stk->sz = 1;
     stk->offset = 0;
 }
@@ -21,10 +21,10 @@ void push(stack *stk, int item)
     if(stk->offset >= stk->sz)
     {
         int newSZ = stk->sz << 1;
-        stk->ptr = (int*)realloc(stk->ptr, newSZ);
+        stk->buf = (int*)realloc(stk->buf, newSZ);
         stk->sz = newSZ;
     }
-    *(stk->ptr + stk->offset) = item;
+    *(stk->buf + stk->offset) = item;
     stk->offset ++;
 }
 
@@ -40,7 +40,7 @@ int top(stack *stk)
 {
     if(stk->offset >= 1)
     {
-        return *(stk->ptr + stk->offset - 1);
+        return *(stk->buf + stk->offset - 1);
     }
     return -1;//NA
 }
