@@ -8,19 +8,21 @@ typedef struct stack
     int sz;
     int offset;
 }stack;
-
+/*
 void init(stack *stk)
 {
     stk->buf = (int*)malloc(sizeof(int));
     stk->sz = 1;
     stk->offset = 0;
 }
+*/
 
 void push(stack *stk, int item)
 {
     if(stk->offset >= stk->sz)
     {
-        int newSZ = stk->sz << 1;
+       // int newSZ = stk->sz << 1;
+        int newSZ = stk->sz == 0 ? 1 : stk->sz << 1;
         stk->buf = (int*)realloc(stk->buf, newSZ);
         stk->sz = newSZ;
     }
@@ -54,9 +56,10 @@ int empty(stack *stk)
 
 int main()
 {
-    stack s;
+    static stack s;
+//    stack s;
     printf("%lu\n", sizeof(s));
-    init(&s);
+//    init(&s);
     for(int i = 1; i <= 5; i++)
         push(&s,i);
     while(!empty(&s))
