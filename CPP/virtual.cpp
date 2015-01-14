@@ -15,6 +15,10 @@ class Polygon
         {
             return 0;
         }
+        virtual void test()
+        {
+            cout << "base" << endl;
+        }
 };
 
 class Rectangle: public Polygon
@@ -24,6 +28,10 @@ class Rectangle: public Polygon
         {
             return width * height;
         }
+        void test()
+        {
+            cout << "rectangle" << endl;
+        }
 };
 
 class Triangle: public Polygon
@@ -32,6 +40,10 @@ class Triangle: public Polygon
         int area()
         {
             return width * height / 2;
+        }
+        void test()
+        {
+            cout << "triangle" << endl;
         }
 };
 
@@ -52,9 +64,15 @@ int main()
     //call
     cout << ppoly1->area() << endl;
     cout << ppoly2->area() << endl;
-    
+   
+
     Polygon poly;
     Polygon *ppoly3 = &poly;
     cout << ppoly3->area() << endl;
+
+    cout << "function call test() " << endl;
+    ppoly3->test();
+    ppoly1->test();
+    ppoly2->test();
     return 0;
 }

@@ -48,6 +48,10 @@ ListNode* deleteNode(int value, ListNode *head)
     return res;
 }
 
+ListNode* deleteNode2(int target, ListNode *head)
+{
+
+
 ListNode* reverseList(ListNode* head)
 {
     ListNode* pre = NULL;

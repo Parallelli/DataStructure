@@ -168,6 +168,35 @@ TreeNode* inorderSuccessor(TreeNode *rt, TreeNode *target)
     return succ;
 }
 
+TreeNode* inorderSuccessor2(TreeNode *rt, int target)
+{
+    TreeNode *succ=NULL;
+    while(rt)
+    {
+        if(rt->val < target)
+            rt = rt->right;
+        else if(rt->val > target)
+        {
+            succ = rt;
+            rt = rt->left;
+        }
+        else if(rt->val == target)
+        {
+            if(rt->right)
+            {
+                rt = rt -> right;
+                while(rt->left)
+                {
+                    rt = rt->left;
+                }
+                succ = rt;
+            }
+            break;
+        }
+    }
+    return succ;
+}
+
 TreeNode* findTarget(TreeNode *rt, int value)
 {
     if(rt->val == value)
@@ -245,6 +274,12 @@ int main()
 
     TreeNode* succ = inorderSuccessor(rt0, target);
     printf("succ of %d is %d\n",target->val,  succ->val);
+   
+    target = findTarget(rt0, 6);
+    TreeNode* succ2 = inorderSuccessor2(rt0, target->val);
+    printf("succ of %d is %d\n",target->val,  succ2->val);
+
+
 
     preorder(rt0);
     printf("\n");    
