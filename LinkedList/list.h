@@ -40,5 +40,9 @@ ListNode* reverseKGroup(ListNode *head, int k);
 //rotate list to the right by k places
 ListNode *rotateRight(ListNode *head, int k);
 
+//reverse words represent by linked list
+//f-o-o-_-b-o-o_-null, two words, foo, boo seperated by space
+ListNode *reverseWords(ListNode *head);
+
 //print linkedList
 void printList(ListNode *head);
