@@ -50,7 +50,7 @@ ListNode* deleteNode(int value, ListNode *head)
 
 ListNode* deleteNode2(int target, ListNode *head)
 {
-
+}
 
 ListNode* reverseList(ListNode* head)
 {
@@ -118,6 +118,19 @@ ListNode* insertNode(int pos, int value,  ListNode *head) //return new head
         return tmp;
     }
 }
+//incorrect
+ListNode *reverseList2(ListNode *pre, ListNode *head)
+{
+    if(!head || !head->next)
+        return head;
+    ListNode *tmp = head;
+    ListNode *nxt = head->next;
+    head->next = pre;
+    ListNode *ret = reverseList2(head,nxt);
+    ret->next = tmp;
+    pre = ret;
+    return ret;
+}
 
 ListNode* detectCircle(ListNode *head); // return new head
 
@@ -134,6 +147,10 @@ int main()
     }
     printf("after adding nodes: ");
     printList(head);
+    
+    printf("new reverse\n");
+    ListNode *ret = reverseList2(NULL, head);
+    printList(ret);
 
     printf("after reverse linkedlist: ");
     head =  reverseList(head);
